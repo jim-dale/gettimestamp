@@ -4,8 +4,9 @@ Returns the current UTC date and time as a single string suitable for use in a f
 Example
 
 ```dosbatch
-FOR /F %%I IN ('gettimestamp') DO SET TIMESTAMP=%%I
-7za.exe a -r -tzip "%TIMESTAMP% Documents.zip" "%USERPROFILE%\Documents\*.*"
+FOR /F "tokens=*" %%I IN ('gettimestamp') DO @SET TIMESTAMP=%%I
+
+7za.exe a -r -tzip "%TIMESTAMP% Documents.zip" "%USERPROFILE%\Documents\*"
 ```
 
 produces a file called
